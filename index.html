@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container" >
+         <p id="para"></p>
+         <p id="par"></p>
+         <p id="pa"></p>
+         <p id="p"></p>
+         <p id="a"></p>
+    </div>
+
+    <script>
+
+fetch('https://api.open-meteo.com/v1/forecast?latitude=28.6654&longitude=77.4391&current=temperature_2m,precipitation,rain,wind_speed_10m,relative_humidity_2m,is_day&timezone=auto ')
+.then(response => response.json())
+    .then(data => {
+        console.log(data);
+      document.getElementById("para").innerText = " Time :- " + data.current.time;
+      document.getElementById("par").innerText =" Temperature :- " + data.current.temperature_2m;
+      document.getElementById("pa").innerText = " wind speed :- " +data.current.wind_speed_10m;      ;
+      document.getElementById("p").innerText = " latitude :- " +data.latitude;
+      document.getElementById("a").innerText = " longitude :- " +data.longitude;
+    })
+    </script>
+</body>
+</html>
